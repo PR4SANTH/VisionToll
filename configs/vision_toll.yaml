@@ -1,0 +1,100 @@
+# ==============================================================================
+# VisionToll Central Experiment Configuration
+# Academic Project: Deep Learning Course (23CSE473)
+# ==============================================================================
+
+project:
+  name: "VisionToll"
+  title: "Deep Learning-Based Vehicle Detection and Classification for Automated Toll Plaza Monitoring"
+  version: "1.0.0"
+  seed: 42
+
+classes:
+  nc: 5
+  names:
+    0: "Bus"
+    1: "Car"
+    2: "Motorcycle"
+    3: "Auto Rickshaw"
+    4: "Truck"
+
+paths:
+  local:
+    root: "D:/VisionToll"
+    raw_fgvd: "D:/VisionToll/data/raw/FGVD"
+    processed_yolo: "D:/VisionToll/data/processed/vision_toll_yolo"
+    data_yaml: "D:/VisionToll/data/processed/vision_toll_yolo/data.yaml"
+    models_dir: "D:/VisionToll/models"
+    results_dir: "D:/VisionToll/results"
+
+experiments:
+  experiment_1_baseline:
+    name: "exp1_yolov8n_baseline"
+    model: "yolov8n.pt"
+    imgsz: 640
+    epochs: 50
+    batch: 16
+    optimizer: "auto"
+    lr0: 0.01
+    lrf: 0.01
+    patience: 15
+    seed: 42
+    workers: 4
+    augmentations:
+      mosaic: 1.0
+      mixup: 0.0
+      copy_paste: 0.0
+      degrees: 0.0
+      translate: 0.1
+      scale: 0.5
+      fliplr: 0.5
+      flipud: 0.0
+
+  experiment_2_improved:
+    name: "exp2_yolov8n_targeted"
+    base_model: "yolov8n.pt"
+    imgsz: 640
+    epochs: 50
+    batch: 16
+    optimizer: "auto"
+    lr0: 0.01
+    lrf: 0.01
+    patience: 15
+    seed: 42
+    workers: 4
+    intervention_target: "small_object_and_class_balance"
+    # Tuned specifically based on baseline error analysis (e.g. motorcycles and auto rickshaws)
+    augmentations:
+      mosaic: 1.0
+      mixup: 0.15
+      copy_paste: 0.2
+      scale: 0.7
+      fliplr: 0.5
+      close_mosaic: 10
+
+  experiment_3_capacity:
+    name: "exp3_yolov8s_capacity"
+    model: "yolov8s.pt"
+    imgsz: 640
+    epochs: 50
+    batch: 16
+    optimizer: "auto"
+    lr0: 0.01
+    lrf: 0.01
+    patience: 15
+    seed: 42
+    workers: 4
+    augmentations:
+      mosaic: 1.0
+      scale: 0.5
+      fliplr: 0.5
+
+evaluation:
+  conf_threshold: 0.25
+  iou_threshold: 0.50
+  metrics:
+    - "Precision"
+    - "Recall"
+    - "F1"
+    - "mAP@0.50"
+    - "mAP@0.50:0.95"

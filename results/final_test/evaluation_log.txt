@@ -1,0 +1,130 @@
+﻿================================================================================
+VISIONTOLL — FINAL HELD-OUT TEST EVALUATION LOG
+================================================================================
+Evaluation ID   : VISIONTOLL_FINAL_TEST_V1
+Timestamp       : 2026-10-02 05:37:00 IST (+05:30)
+Project         : VisionToll — Deep Learning Vehicle Detection for Toll Monitoring
+Course          : 23CSE473 Neural Networks and Deep Learning (Group A12)
+Evaluator       : Antigravity AI — Autonomous Evaluation Pipeline
+================================================================================
+
+[STEP 1] SHA-256 CHECKPOINT VERIFICATION
+  Checkpoint    : D:\VisionToll\models\exp3_yolov8s\best.pt
+  Recorded Hash : 5D1BE0D0F93B54CB1A7B11F71DC8CCA0FA6D883185D5361289E8772D1B57BDAD
+  Computed Hash : 5D1BE0D0F93B54CB1A7B11F71DC8CCA0FA6D883185D5361289E8772D1B57BDAD
+  Status        : VERIFIED OK
+
+[STEP 2] ENVIRONMENT RECORD
+  Python        : 3.12.5 (tags/v3.12.5:ff3bc82, Aug 6 2024) [MSC v.1940 64-bit AMD64]
+  PyTorch       : 2.6.0+cu124
+  torchvision   : 0.21.0+cu124
+  Ultralytics   : 8.4.138
+  CUDA          : 12.4
+  GPU           : NVIDIA GeForce RTX 3050 6GB Laptop GPU
+  CUDA Available: True
+
+[STEP 3] TEST DATASET VERIFICATION
+  Dataset Path  : D:\VisionToll\data\processed\vision_toll_yolo
+  Config        : data\processed\vision_toll_yolo\data.yaml
+  Split         : test
+  Images Found  : 1083
+  Label Files   : 1083
+  Pairing       : 100% (0 orphaned files)
+  GT Instances  : 3926
+  Class Check   : All annotations strictly in range 0-4. No violations.
+  Overlap Check : Zero test images present in train or val splits.
+  Status        : DATASET INTEGRITY OK
+
+[STEP 4] EVALUATION PROTOCOL
+  Script        : scripts/eval_final_test.py (Ultralytics YOLO.val())
+  Split         : test
+  Image Size    : 640x640
+  Batch Size    : 16
+  Conf (mAP)    : 0.001 (standard curve integration)
+  Conf (HE)     : 0.25 (hard-example extraction)
+  IoU NMS       : 0.70
+  mAP IoU Range : 0.50:0.05:0.95
+  Training      : NONE — read-only evaluation only
+  Weight Mod    : NONE
+
+[STEP 5] MODEL LOADING
+  Loading       : D:\VisionToll\models\exp3_yolov8s\best.pt
+  Architecture  : YOLOv8s, 130 layers, 11,137,535 params, 28.7 GFLOPs
+  Device        : CUDA (RTX 3050)
+  Status        : LOADED OK
+
+[STEP 6] INFERENCE RUN
+  Images Processed : 1083 / 1083
+  GT Instances     : 3926
+  Predictions (NMS): 4240
+  Predictions (c25): 4430
+  Preprocess       : 0.27 ms/img
+  Inference        : 7.05 ms/img
+  Postprocess      : 0.65 ms/img
+  Total Pipeline   : 7.97 ms/img
+  FPS              : 125.4
+  Status           : INFERENCE COMPLETE
+
+[STEP 7] METRIC COMPUTATION
+  Precision    : 0.8574
+  Recall       : 0.8017
+  F1           : 0.8286
+  mAP@0.50     : 0.8811
+  mAP@0.50:0.95: 0.7343
+  Per-class:
+    Bus       [0]: P=0.8734 R=0.7563 F1=0.8107 mAP50=0.8382 mAP5095=0.6976
+    Car       [1]: P=0.9059 R=0.8273 F1=0.8648 mAP50=0.9264 mAP5095=0.8032
+    Motorcycle[2]: P=0.8202 R=0.7860 F1=0.8027 mAP50=0.8644 mAP5095=0.6361
+    AutoRick  [3]: P=0.9001 R=0.8481 F1=0.8733 mAP50=0.9216 mAP5095=0.8163
+    Truck     [4]: P=0.7874 R=0.7912 F1=0.7893 mAP50=0.8550 mAP5095=0.7182
+  Status       : METRICS COMPUTED OK
+
+[STEP 8] MOTORCYCLE DIAGNOSTICS
+  GT Total       : 1085
+  Pred (conf>=.25): 1332
+  True Positives : 930
+  False Negatives: 155
+  False Positives: 402
+  Recall@IoU.50  : 0.8571
+  Small (<32px)  : 16/40 detected (40.0% recall)
+  Crowded (>=6v) : 254/318 detected (79.87% recall)
+  Status         : DIAGNOSTICS COMPLETE
+
+[STEP 9] HARD-EXAMPLE PROFILING
+  Total Scenes   : 1083
+  Hard Scenes    : 495 (45.71%)
+  Low-Conf       : 349 scenes
+  Crowded        : 158 scenes
+  Small Object   : 110 scenes
+  Count Discord  : 105 scenes
+  Complete Miss  : 4 scenes
+  Status         : PROFILING COMPLETE
+
+[STEP 10] GENERALIZATION GAP ANALYSIS
+  mAP@0.50:  val=0.8775 -> test=0.8811  delta=+0.0036 (+0.41%)
+  mAP5095:   val=0.7399 -> test=0.7343  delta=-0.0056 (-0.76%)
+  F1:        val=0.8207 -> test=0.8286  delta=+0.0079 (+0.96%)
+  Assessment: Negligible gap. No overfitting detected.
+  Status     : ANALYSIS COMPLETE
+
+[STEP 11] OUTPUT FILE CREATION
+  final_test_metrics.json     : WRITTEN
+  final_test_metrics.csv      : WRITTEN
+  per_class_metrics.csv       : WRITTEN
+  inference_benchmark.json    : WRITTEN
+  evaluation_log.txt          : WRITING
+  final_test_report.md        : EXISTING (authoritative, unmodified)
+  docs/final_test_evaluation.md: WRITING
+
+[STEP 12] FINAL INTEGRITY VERIFICATION
+  Images evaluated    : 1083 / 1083  PASS
+  SHA-256 match       : PASS
+  Training performed  : NO  PASS
+  Weights modified    : NO  PASS
+  Metrics saved       : YES PASS
+
+================================================================================
+EVALUATION STATUS: COMPLETE
+LIFECYCLE STATUS : VisionToll experimental lifecycle FORMALLY CONCLUDED.
+Model weights are permanently frozen. No further training or modification permitted.
+================================================================================

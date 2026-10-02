@@ -1,0 +1,2 @@
+﻿Architecture_ID,Model,Architecture_Type,Parameters,Best_Epoch_Val,Val_Precision,Val_Recall,Val_F1,Val_mAP50,Val_mAP50_95,Test_Precision,Test_Recall,Test_F1,Test_mAP50,Test_mAP50_95,Generalization_Gap_mAP50,Generalization_Gap_mAP5095,FPS,Latency_ms,Training_Time,Evaluation_Split,Test_Set_Used
+ARCH-02,YOLOv8s,Single-stage Anchor-Free CNN,11137535,48,0.8289,0.8127,0.8207,0.8775,0.7399,0.8574,0.8017,0.8286,0.8811,0.7343,+0.0036,−0.0056,125.4,7.97,92.16 min,884 images val / 1083 images test,YES (ONE-TIME FINAL)

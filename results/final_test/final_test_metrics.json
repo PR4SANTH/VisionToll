@@ -1,0 +1,76 @@
+﻿{
+  "evaluation_id": "VISIONTOLL_FINAL_TEST_V1",
+  "evaluation_title": "VisionToll Final One-Time Held-Out Test Evaluation",
+  "evaluation_timestamp": "2026-10-02T05:37:00+05:30",
+  "evaluation_status": "COMPLETE - MODEL PERMANENTLY FROZEN",
+  "reproducibility": {
+    "frozen_model_path": "D:\\VisionToll\\models\\exp3_yolov8s\\best.pt",
+    "model_sha256": "5D1BE0D0F93B54CB1A7B11F71DC8CCA0FA6D883185D5361289E8772D1B57BDAD",
+    "model_architecture": "YOLOv8s (130 layers, 11,137,535 parameters, 28.7 GFLOPs)",
+    "python_version": "3.12.5 [MSC v.1940 64 bit (AMD64)]",
+    "pytorch_version": "2.6.0+cu124",
+    "torchvision_version": "0.21.0+cu124",
+    "ultralytics_version": "8.4.138",
+    "cuda_version": "12.4",
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "dataset_config": "D:\\VisionToll\\data\\processed\\vision_toll_yolo\\data.yaml",
+    "evaluation_split": "test",
+    "image_size": 640,
+    "batch_size": 16,
+    "confidence_threshold_map": 0.001,
+    "confidence_threshold_hardexample": 0.25,
+    "iou_nms_threshold": 0.70,
+    "map_iou_range": "0.50:0.05:0.95",
+    "evaluation_script": "scripts/eval_final_test.py",
+    "training_performed": false,
+    "weights_modified": false,
+    "test_set_previously_accessed": false
+  },
+  "dataset_profile": {
+    "num_test_images": 1083,
+    "num_test_label_files": 1083,
+    "num_gt_instances": 3926,
+    "num_predicted_detections_nms": 4240,
+    "num_predicted_detections_conf25": 4430,
+    "gt_class_distribution": {"0_Bus": 219, "1_Car": 1559, "2_Motorcycle": 1085, "3_Auto_Rickshaw": 754, "4_Truck": 309},
+    "gt_class_percentage": {"0_Bus": 5.58, "1_Car": 39.71, "2_Motorcycle": 27.64, "3_Auto_Rickshaw": 19.21, "4_Truck": 7.87}
+  },
+  "overall_metrics": {
+    "precision": 0.8574, "recall": 0.8017, "f1": 0.8286, "map50": 0.8811, "map50_95": 0.7343
+  },
+  "per_class_metrics": {
+    "Bus":           {"class_id": 0, "gt_instances": 219,  "precision": 0.8734, "recall": 0.7563, "f1": 0.8107, "map50": 0.8382, "map50_95": 0.6976},
+    "Car":           {"class_id": 1, "gt_instances": 1559, "precision": 0.9059, "recall": 0.8273, "f1": 0.8648, "map50": 0.9264, "map50_95": 0.8032},
+    "Motorcycle":    {"class_id": 2, "gt_instances": 1085, "precision": 0.8202, "recall": 0.7860, "f1": 0.8027, "map50": 0.8644, "map50_95": 0.6361},
+    "Auto_Rickshaw": {"class_id": 3, "gt_instances": 754,  "precision": 0.9001, "recall": 0.8481, "f1": 0.8733, "map50": 0.9216, "map50_95": 0.8163},
+    "Truck":         {"class_id": 4, "gt_instances": 309,  "precision": 0.7874, "recall": 0.7912, "f1": 0.7893, "map50": 0.8550, "map50_95": 0.7182}
+  },
+  "motorcycle_diagnostics": {
+    "gt_total": 1085, "pred_total_conf25": 1332, "matched_tp_iou50": 930, "missed_fn": 155, "background_fp": 402,
+    "recall_iou50": 0.8571, "precision_conf25": 0.6982,
+    "small_object_lt32px": {"gt_total": 40, "detected": 16, "missed": 24, "recall": 0.4000},
+    "crowded_scenes_ge6_vehicles": {"gt_total": 318, "detected": 254, "missed": 64, "recall": 0.7987},
+    "low_conf_preds_025_040": 188, "mean_confidence": 0.7007, "median_confidence": 0.7859
+  },
+  "hard_example_profile": {
+    "total_test_scenes": 1083, "total_hard_scenes": 495, "hard_scene_percentage": 45.71,
+    "low_confidence_scenes": 349, "crowded_scenes": 158, "small_object_scenes": 110,
+    "count_discrepancy_scenes": 105, "complete_miss_scenes": 4
+  },
+  "generalization_gap": {
+    "note": "YOLOv8s Exp-3 validation vs. final held-out test only.",
+    "precision":    {"val": 0.8289, "test": 0.8574, "delta": 0.0285},
+    "recall":       {"val": 0.8127, "test": 0.8017, "delta": -0.0110},
+    "f1":           {"val": 0.8207, "test": 0.8286, "delta": 0.0079},
+    "map50":        {"val": 0.8775, "test": 0.8811, "delta": 0.0036},
+    "map50_95":     {"val": 0.7399, "test": 0.7343, "delta": -0.0056},
+    "moto_map50_95":{"val": 0.6216, "test": 0.6361, "delta": 0.0145},
+    "overall_gap_abs": 0.0056, "overall_gap_rel_pct": 0.76,
+    "assessment": "Negligible generalization gap (<0.8% relative mAP50-95). No evidence of overfitting."
+  },
+  "integrity_checks": {
+    "images_evaluated": 1083, "images_evaluated_matches_spec": true,
+    "sha256_verified": true, "training_performed": false,
+    "weight_files_changed": false, "metrics_saved": true, "evaluation_complete": true
+  }
+}

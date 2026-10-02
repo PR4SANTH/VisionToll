@@ -1,0 +1,48 @@
+﻿{
+  "benchmark_id": "VISIONTOLL_FINAL_INFERENCE_BENCHMARK",
+  "timestamp": "2026-10-02T05:37:00+05:30",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "gpu_tgp_w": 60,
+    "cuda_version": "12.4",
+    "driver": "CUDA 12.4 (production)"
+  },
+  "model": {
+    "architecture": "YOLOv8s",
+    "checkpoint": "D:\\VisionToll\\models\\exp3_yolov8s\\best.pt",
+    "sha256": "5D1BE0D0F93B54CB1A7B11F71DC8CCA0FA6D883185D5361289E8772D1B57BDAD",
+    "parameters": 11137535,
+    "gflops_at_640": 28.7,
+    "checkpoint_size_mb": 22.5,
+    "precision_mode": "FP32 (AMP not applied at inference)"
+  },
+  "evaluation_config": {
+    "dataset": "test split (1083 images)",
+    "input_resolution": "640x640",
+    "batch_size": 16,
+    "letterboxing": true
+  },
+  "latency_ms": {
+    "preprocess_per_image": 0.27,
+    "inference_per_image": 7.05,
+    "postprocess_nms_per_image": 0.65,
+    "total_pipeline_per_image": 7.97
+  },
+  "throughput": {
+    "fps": 125.4,
+    "ms_per_frame": 7.97
+  },
+  "operational_feasibility": {
+    "single_lane_fps_requirement": 30,
+    "multi_lane_fps_requirement": 60,
+    "max_simultaneous_lanes_at_30fps": 4,
+    "max_simultaneous_lanes_at_25fps": 5,
+    "headroom_factor": 4.18,
+    "verdict": "Meets real-time requirement with >4x headroom for multi-lane toll operations"
+  },
+  "deployment_notes": {
+    "edge_gpu_note": "Benchmarked on RTX 3050 6GB Laptop (60W TGP). Production deployment on Jetson Orin Nano requires TensorRT FP16/INT8 export.",
+    "onnx_export_recommended": true,
+    "tensorrt_export_recommended": true
+  }
+}

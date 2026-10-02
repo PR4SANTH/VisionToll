@@ -1,0 +1,14 @@
+Primary demo:
+D:\VisionToll\results\final_project\demo_samples\demo_01.jpg
+
+Why selected:
+demo_01.jpg (source: 733.jpg) is the highest-scoring multi-class validation scene in the entire dataset. It is one of only two validation scenes where all 5 target classes (Bus, Car, Motorcycle, Auto Rickshaw, Truck) are both visually present in ground truth and simultaneously detected by the frozen YOLOv8s model at standard inference settings (conf=0.25, iou=0.50). Captured at crisp 1920x1080 resolution, it features large vehicle bounding boxes (average area 187,903 px^2), prominent foreground vehicles (769x1068 px Bus with 0.961 confidence; 629x525 px Car with 0.933 confidence; 369x269 px Auto Rickshaw with 0.897 confidence; 461x415 px Truck with 0.527 confidence; and Motorcycle with 0.254 confidence), balanced spatial distribution across the frame, and zero severe occlusions. It offers the complete 5-class demonstration capability for faculty evaluation.
+
+Classes visible:
+Bus, Car, Motorcycle, Auto Rickshaw, Truck
+
+Classes detected:
+Bus, Car, Motorcycle, Auto Rickshaw, Truck
+
+Backup:
+D:\VisionToll\results\final_project\demo_samples\demo_02.jpg
