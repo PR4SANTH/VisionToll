@@ -81,7 +81,7 @@ Performance graphs and comparisons are available in `results/visualizations/`.
 ## 17. Dataset Setup
 As the dataset is not bundled, users wishing to retrain must manually acquire the FGVD dataset. This repository is not fully self-contained for retraining out-of-the-box.
 
-## 18. Model Information
+## 18. Model Information (Production YOLOv8s)
 - Size: ~22MB
 - Parameters: ~11.1M
 - Output: 5 classes + bounding boxes
